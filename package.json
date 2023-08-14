@@ -1,0 +1,23 @@
+{
+	"name": "blog-express",
+	"version": "1.0.0",
+	"description": "Esta es una api de blog simple",
+	"main": "server.js",
+	"scripts": {
+		"build": "npx tsc",
+		"start": "node dist/server.js",
+		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2",
+		"uuid": "^9.0.0"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.17",
+		"@types/node": "^20.5.0",
+		"@types/uuid": "^9.0.2",
+		"typescript": "^5.1.6"
+	}
+}
