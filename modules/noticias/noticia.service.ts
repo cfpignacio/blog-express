@@ -11,11 +11,12 @@ export const crearNoticia = (req: Request, res: Response) => {
 		if (!data.titulo && !data.contenido) {
 			throw new Error();
 		}
+
 		const nuevaNoticia: iNoticia = {
 			id: uuidv4(),
 			titulo: data.titulo,
 			contenido: data.contenido,
-			fecha: Date.now().toString(),
+			fecha: new Date().toLocaleDateString(),
 		};
 
 		noticiaDB.push(nuevaNoticia);
@@ -27,5 +28,24 @@ export const crearNoticia = (req: Request, res: Response) => {
 };
 
 export const listarNoticia = (req: Request, res: Response) => {
-	res.json(noticiaDB);
+	try {
+		res.json(noticiaDB);
+	} catch (error) {
+		res.status(500).json({ msg: 'No se pudo obtener un listado de noticias' });
+	}
 };
+
+// obtener noticia por id
+export const obtenerNoticiaId = (req: Request, res: Response) => {
+	try {
+		const noticia = noticiaDB.find((n) => n.id === req.params.id);
+		if (!noticia) {
+			throw new Error();
+		}
+		res.json(noticia);
+	} catch (error) {
+		res.status(404).json({ msg: 'No se pudo encontrar la noticia' });
+	}
+};
+
+// eliminar noticia

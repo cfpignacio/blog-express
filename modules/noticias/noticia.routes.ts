@@ -1,5 +1,9 @@
 import express from 'express';
-import { crearNoticia, listarNoticia } from './noticia.service';
+import {
+	crearNoticia,
+	listarNoticia,
+	obtenerNoticiaId,
+} from './noticia.service';
 
 const noticiasRoutes = express.Router();
 
@@ -12,6 +16,7 @@ noticiasRoutes.get('/', listarNoticia);
 
 // [GET] endpoint obtener noticia por id /:id
 
+noticiasRoutes.get('/:id', obtenerNoticiaId);
 // [DELETE] endpoint borrar
 
 export default noticiasRoutes;
