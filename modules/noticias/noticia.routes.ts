@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+	borrarNoticia,
 	crearNoticia,
 	listarNoticia,
 	obtenerNoticiaId,
@@ -17,6 +18,8 @@ noticiasRoutes.get('/', listarNoticia);
 // [GET] endpoint obtener noticia por id /:id
 
 noticiasRoutes.get('/:id', obtenerNoticiaId);
+
 // [DELETE] endpoint borrar
+noticiasRoutes.delete('/:id', borrarNoticia);
 
 export default noticiasRoutes;

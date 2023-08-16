@@ -49,3 +49,17 @@ export const obtenerNoticiaId = (req: Request, res: Response) => {
 };
 
 // eliminar noticia
+export const borrarNoticia = (req: Request, res: Response) => {
+	const idDelete = req.params.id;
+
+	const indexToDelete = noticiaDB.findIndex(
+		(noticia) => noticia.id === idDelete
+	);
+
+	if (indexToDelete === -1) {
+		res.status(404).json({ msg: 'Noticia no encontrada' });
+	} else {
+		noticiaDB.splice(indexToDelete, 1);
+		res.status(200).json({ msg: 'Noticia eliminada' });
+	}
+};
