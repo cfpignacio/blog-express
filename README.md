@@ -29,7 +29,8 @@
 
     	"scripts": {
 		"build": "npx tsc",
-		"start": "node dist/index.js"
+		"start": "node dist/index.js",
+  		"dev": "nodemon server.ts"
 	    }
 8 Modificar archivo tsconfig.json descomentado la linea ```"outDir": "./"``` y agregando la carpeta dist ```"outDir": "./dist"```
 
